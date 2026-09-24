@@ -1,0 +1,3917 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Raiyan Methodz</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+ margin:0;
+ font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+ background:#f5f7fb;
+ color:#172033
+}
+button,input{font:inherit}
+.hidden{display:none!important}
+
+.credit{
+ text-align:center;
+ background:#fff;
+ color:#8a93a1;
+ font-size:12px;
+ padding:10px;
+ border-bottom:1px solid #edf0f4
+}
+.credit span{color:#ef4444}
+
+.top{
+ height:68px;
+ background:#fff;
+ border-bottom:1px solid #e5e9f0;
+ display:flex;
+ align-items:center;
+ padding:0 20px;
+ gap:15px;
+ position:sticky;
+ top:0;
+ z-index:30
+}
+
+.menu{
+ border:0;
+ background:none;
+ display:grid;
+ gap:5px;
+ padding:10px;
+ cursor:pointer
+}
+.menu i{
+ display:block;
+ width:25px;
+ height:3px;
+ background:#475569;
+ border-radius:4px
+}
+
+.logo{
+ font-size:22px;
+ font-weight:850
+}
+.logo b{color:#2563eb}
+
+.avatar{
+ margin-left:auto;
+ width:39px;
+ height:39px;
+ border-radius:50%;
+ background:#eaf1ff;
+ display:grid;
+ place-items:center;
+ font-weight:800;
+ color:#2563eb
+}
+
+.container{
+ max-width:1100px;
+ margin:auto;
+ padding:28px 20px 60px
+}
+
+.auth{
+ min-height:calc(100vh - 35px);
+ display:grid;
+ place-items:center;
+ padding:20px;
+ background:linear-gradient(135deg,#eef4ff,#f7f5ff)
+}
+
+.auth-card{
+ width:min(430px,100%);
+ background:#fff;
+ padding:30px;
+ border-radius:22px;
+ box-shadow:0 20px 60px #26334d16
+}
+
+.tabs{
+ display:flex;
+ gap:5px;
+ background:#f2f4f8;
+ padding:4px;
+ border-radius:11px;
+ margin:20px 0
+}
+
+.tab{
+ flex:1;
+ border:0;
+ padding:10px;
+ border-radius:8px;
+ background:none;
+ font-weight:700;
+ color:#687386;
+ cursor:pointer
+}
+
+.tab.active{
+ background:#fff;
+ color:#2563eb
+}
+
+.field{margin-bottom:13px}
+
+.field label{
+ display:block;
+ font-size:13px;
+ font-weight:700;
+ margin-bottom:6px
+}
+
+.field input{
+ width:100%;
+ padding:12px;
+ border:1px solid #e5e9f0;
+ border-radius:10px;
+ outline:0
+}
+
+.btn{
+ border:0;
+ border-radius:10px;
+ padding:11px 15px;
+ font-weight:750;
+ cursor:pointer
+}
+
+.primary{
+ background:#2563eb;
+ color:#fff
+}
+
+.secondary{
+ background:#eef2f7;
+ color:#334155
+}
+
+.danger{
+ background:#fee2e2;
+ color:#b91c1c
+}
+
+.full{width:100%}
+
+.linkbtn{
+ border:0;
+ background:none;
+ color:#2563eb;
+ font-weight:700;
+ cursor:pointer
+}
+
+.msg{
+ padding:10px;
+ border-radius:10px;
+ font-size:13px;
+ margin-bottom:13px
+}
+
+.error{
+ background:#fee2e2;
+ color:#991b1b
+}
+
+.success{
+ background:#dcfce7;
+ color:#166534
+}
+
+.muted{color:#687386}
+
+.hero{
+ padding:22px 0 30px
+}
+
+.hero h1{
+ font-size:clamp(30px,5vw,48px);
+ margin:0
+}
+
+.grid3{
+ display:grid;
+ grid-template-columns:repeat(3,1fr);
+ gap:18px
+}
+
+.grid2{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:18px
+}
+
+.card{
+ background:#fff;
+ border:1px solid #e5e9f0;
+ border-radius:17px;
+ padding:18px
+}
+
+.click{cursor:pointer}
+
+.card:hover{
+ border-color:#b9ccff
+}
+
+.back{
+ border:0;
+ background:none;
+ color:#2563eb;
+ font-weight:700;
+ padding:0;
+ margin-bottom:18px;
+ cursor:pointer
+}
+
+.thumb{
+ aspect-ratio:16/9;
+ background:#ddd;
+ border-radius:11px;
+ overflow:hidden
+}
+
+.thumb img{
+ width:100%;
+ height:100%;
+ object-fit:cover
+}
+
+.watch{margin-top:10px}
+
+.player{
+ background:#000;
+ border-radius:14px;
+ overflow:hidden
+}
+.video-protect{
+ position:relative;
+}
+
+.video-block-share{
+ position:absolute;
+ right:0;
+ bottom:0;
+ width:100px;
+ height:75px;
+ z-index:20;
+ background:transparent;
+}
+
+.video-protect,
+.video-protect iframe{
+ -webkit-user-select:none;
+ user-select:none;
+ -webkit-touch-callout:none;
+}
+
+.player iframe{
+ display:block;
+ width:100%;
+ aspect-ratio:16/9;
+ border:0
+}
+
+.side{
+ position:fixed;
+ z-index:100;
+ top:0;
+ left:-285px;
+ width:270px;
+ height:100vh;
+ background:#fff;
+ box-shadow:10px 0 35px #0002;
+ padding:20px;
+ transition:.2s
+}
+
+.side.open{left:0}
+
+.side button{
+ display:block;
+ width:100%;
+ text-align:left;
+ border:0;
+ background:none;
+ padding:13px;
+ border-radius:10px;
+ font-weight:700;
+ cursor:pointer
+}
+
+.overlay{
+ display:none;
+ position:fixed;
+ inset:0;
+ background:#0005;
+ z-index:90
+}
+
+.overlay.show{display:block}
+
+.adminGrid{
+ display:grid;
+ grid-template-columns:280px 1fr;
+ gap:18px
+}
+
+.list{
+ display:grid;
+ gap:8px
+}
+
+.item{
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:8px;
+ border:1px solid #e5e9f0;
+ border-radius:10px;
+ padding:10px
+}
+
+.actions{
+ display:flex;
+ gap:5px
+}
+
+.small{
+ padding:7px 9px;
+ font-size:12px
+}
+
+.empty{
+ text-align:center;
+ padding:28px;
+ color:#687386;
+ border:1px dashed #e5e9f0;
+ border-radius:12px
+}
+
+@media(max-width:800px){
+ .grid3{grid-template-columns:1fr 1fr}
+ .adminGrid{grid-template-columns:1fr}
+}
+
+@media(max-width:520px){
+ .grid3,.grid2{grid-template-columns:1fr}
+ .container{padding:22px 14px 45px}
+}
+.custom-player{
+    position:relative;
+    background:#000;
+    border-radius:14px;
+    overflow:hidden;
+    width:100%;
+}
+
+.custom-player #player{
+    display:block;
+    width:100%;
+    aspect-ratio:16/9;
+    border:0;
+    min-height:0;
+}
+.custom-player #player iframe{
+    display:block;
+    width:100%;
+    height:100%;
+    border:0;
+    pointer-events:none !important;
+}
+
+.player-touch-block{
+    position:absolute;
+    inset:0;
+    z-index:10;
+    background:transparent;
+    pointer-events:auto;
+}
+
+.custom-controls{
+    pointer-events:auto;
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:30;
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:10px;
+    background:linear-gradient(transparent,rgba(0,0,0,.85));
+}
+
+.custom-controls button{
+    border:0;
+    background:rgba(0,0,0,.65);
+    color:#fff;
+    border-radius:8px;
+    padding:8px 10px;
+    cursor:pointer;
+    font-weight:700;
+}
+
+.custom-controls button:active{
+    transform:scale(.94);
+}
+
+.custom-player:fullscreen{
+    width:100vw;
+    height:100vh;
+    border-radius:0;
+}
+
+.custom-player:fullscreen #player{
+    width:100%;
+    height:100%;
+    aspect-ratio:auto;
+}
+.custom-player:fullscreen #player iframe{
+    width:100%;
+    height:100%;
+}
+
+.custom-player:fullscreen 
+.custom-controls{
+    bottom:10px;
+}
+
+/* ===== PROFESSIONAL CUSTOM PLAYER ===== */
+.custom-player{position:relative;background:#000;border-radius:14px;overflow:hidden;width:100%;box-shadow:0 10px 35px rgba(0,0,0,.14)}
+.custom-player #player{display:block;width:100%;aspect-ratio:16/9;border:0;min-height:0}
+.custom-player video#player{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#000;display:block;border:0}
+.custom-player video#player::-webkit-media-controls{display:none!important}.custom-player #player iframe{display:block;width:100%;height:100%;border:0;pointer-events:none!important}
+.player-touch-block{position:absolute;inset:0;z-index:10;background:transparent;pointer-events:auto}
+.custom-controls{pointer-events:auto;position:absolute;left:0;right:0;bottom:0;z-index:30;display:flex;align-items:center;gap:7px;padding:38px 12px 11px;background:linear-gradient(transparent,rgba(0,0,0,.9))}
+.custom-controls button{border:0;background:rgba(0,0,0,.58);color:#fff;border-radius:8px;padding:8px 10px;cursor:pointer;font-weight:700;line-height:1}
+.custom-controls button:hover{background:rgba(255,255,255,.18)}
+.custom-controls button:active{transform:scale(.95)}
+.progress-wrap{position:absolute;left:12px;right:12px;bottom:58px;z-index:35;display:flex;align-items:center;gap:9px;color:#fff;font-size:12px;font-variant-numeric:tabular-nums}
+.progress{flex:1;height:5px;appearance:none;-webkit-appearance:none;background:rgba(255,255,255,.3);border-radius:99px;outline:none;cursor:pointer}
+.progress::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:#fff;box-shadow:0 1px 5px rgba(0,0,0,.4)}
+.progress::-moz-range-thumb{width:15px;height:15px;border:0;border-radius:50%;background:#fff}
+.time{min-width:84px;text-align:right;text-shadow:0 1px 3px #000}
+.custom-player:fullscreen{width:100vw;height:100vh;border-radius:0}
+.custom-player:fullscreen #player{width:100%;height:100%;aspect-ratio:auto}.custom-player:fullscreen #player iframe{width:100%;height:100%}
+.custom-player:fullscreen .custom-controls{bottom:0;padding-bottom:18px}
+.custom-player:fullscreen .progress-wrap{bottom:66px}
+@media(max-width:520px){.custom-controls{gap:4px;padding-left:8px;padding-right:8px}.custom-controls button{padding:8px 8px;font-size:12px}.progress-wrap{left:8px;right:8px}.time{min-width:72px;font-size:11px}}
+
+
+/* ===== PROFESSIONAL ASK ANYTHING / SUPPORT CHAT ===== */
+.support-actions{display:flex;gap:10px;align-items:center;margin-top:18px;flex-wrap:wrap}
+.support-btn{position:relative;display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border:0;border-radius:12px;background:#2563eb;color:#fff;font-weight:800;cursor:pointer;box-shadow:0 8px 22px rgba(37,99,235,.18)}
+.bell-btn{position:relative;width:42px;height:42px;border:1px solid #e5e9f0;background:#fff;border-radius:12px;cursor:pointer;font-size:19px}
+.unread-dot{position:absolute;right:5px;top:5px;width:9px;height:9px;background:#ef4444;border:2px solid #fff;border-radius:50%;display:none}
+.unread-dot.show{display:block}
+.support-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.support-head .back{margin:0}
+.support-title{font-size:22px;font-weight:850}
+.support-status{font-size:12px;color:#16a34a;background:#f0fdf4;border:1px solid #bbf7d0;padding:6px 9px;border-radius:999px;margin-left:auto}
+.chat-card{padding:0;overflow:hidden;display:flex;flex-direction:column;height:min(68vh,650px);min-height:480px}
+.chat-top{padding:16px 18px;border-bottom:1px solid #edf0f4;background:#fff}
+.chat-top strong{display:block}
+.chat-top span{font-size:12px;color:#687386}
+.chat-messages{flex:1;overflow-y:auto;padding:18px;background:#f7f9fc;display:flex;flex-direction:column;gap:10px}
+.bubble-row{display:flex;width:100%}
+.bubble-row.student{justify-content:flex-end}
+.bubble{max-width:min(78%,620px);padding:10px 13px;border-radius:16px;background:#fff;border:1px solid #e5e9f0;box-shadow:0 2px 8px rgba(15,23,42,.04);white-space:pre-wrap;overflow-wrap:anywhere}
+.bubble-row.student .bubble{background:#2563eb;color:#fff;border-color:#2563eb;border-bottom-right-radius:5px}
+.bubble-row.admin .bubble{border-bottom-left-radius:5px}
+.bubble-time{font-size:10px;opacity:.65;margin-top:5px;text-align:right}
+.chat-compose{display:flex;gap:9px;padding:12px;border-top:1px solid #edf0f4;background:#fff}
+.chat-compose textarea{flex:1;resize:none;min-height:44px;max-height:110px;padding:11px 12px;border:1px solid #e5e9f0;border-radius:12px;outline:0}
+.chat-compose textarea:focus{border-color:#9bb7ff;box-shadow:0 0 0 3px #2563eb12}
+.chat-send{width:48px;border:0;border-radius:12px;background:#2563eb;color:#fff;font-weight:900;cursor:pointer}
+.support-list{display:grid;gap:9px}
+.support-thread{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid #e5e9f0;border-radius:13px;background:#fff;cursor:pointer;position:relative;z-index:5;pointer-events:auto;touch-action:manipulation}
+.support-thread:hover{border-color:#b9ccff;background:#fafdff}
+.thread-avatar{width:40px;height:40px;border-radius:50%;background:#eaf1ff;color:#2563eb;display:grid;place-items:center;font-weight:850;flex:none}
+.thread-main{min-width:0;flex:1}
+.thread-main strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.thread-last{font-size:12px;color:#687386;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:3px}
+.thread-meta{text-align:right;flex:none}
+.thread-unread{display:inline-grid;place-items:center;min-width:20px;height:20px;padding:0 6px;border-radius:99px;background:#ef4444;color:#fff;font-size:11px;font-weight:800}
+.admin-chat-wrap{margin-top:18px}
+@media(max-width:520px){
+ .support-status{margin-left:0}
+ .chat-card{min-height:58vh;height:65vh}
+ .bubble{max-width:86%}
+ .chat-compose{padding:9px}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="credit" class="credit hidden">
+ This Website Is Made By Raiyan <span>♥️</span>
+</div>
+
+<!-- LOGIN -->
+<section id="auth" class="auth">
+
+<div class="auth-card">
+
+<div style="text-align:center;font-size:40px">🎓</div>
+
+<h1 style="text-align:center">
+ Raiyan Methodz
+</h1>
+
+<p class="muted" style="text-align:center">
+ Student learning portal
+</p>
+
+<div class="tabs">
+<button id="studentTab" class="tab active">
+ Student Login
+</button>
+
+<button id="adminTab" class="tab">
+ Admin
+</button>
+</div>
+
+<div id="msg"></div>
+
+<!-- STUDENT -->
+<div id="studentAuth">
+
+<div id="loginBox">
+
+<div class="field">
+<label>Phone Number</label>
+<input id="loginId" autocomplete="username">
+</div>
+
+<div class="field">
+<label>Password</label>
+<input id="loginPass" type="password" autocomplete="current-password">
+</div>
+
+<button id="loginBtn" class="btn primary full">
+ Login
+</button>
+
+<p style="text-align:center;font-size:13px">
+New student?
+<button id="toRegister" class="linkbtn">
+Create account
+</button>
+</p>
+
+</div>
+
+<!-- REGISTER -->
+
+<div id="registerBox" class="hidden">
+
+<div class="field">
+<label>Full name</label>
+<input id="regName" autocomplete="name">
+</div>
+
+<div class="field">
+<label>Phone Number</label>
+<input id="regId" autocomplete="username">
+</div>
+
+<div class="field">
+<label>Password</label>
+<input id="regPass" type="password" autocomplete="new-password">
+</div>
+
+<button id="registerBtn" class="btn primary full">
+Create Account
+</button>
+
+<p style="text-align:center;font-size:13px">
+Already registered?
+<button id="toLogin" class="linkbtn">
+Login
+</button>
+</p>
+
+</div>
+
+</div>
+
+<!-- ADMIN LOGIN -->
+
+<div id="adminAuth" class="hidden">
+
+<div class="field">
+<label>Admin password</label>
+<input id="adminPass" type="password">
+</div>
+
+<button id="adminLogin" class="btn primary full">
+Open Admin Panel
+</button>
+
+</div>
+
+</div>
+</section>
+
+
+<!-- STUDENT WEBSITE -->
+
+<div id="studentApp" class="hidden">
+
+<header class="top">
+
+<button id="menuBtn" class="menu">
+<i></i>
+<i></i>
+<i></i>
+</button>
+
+<div class="logo">
+Raiyan<b>Methodz</b>
+</div>
+
+<button id="bellBtn" class="bell-btn" title="Messages" aria-label="Messages">🔔<span id="unreadDot" class="unread-dot"></span></button>
+
+<div id="avatar" class="avatar">
+S
+</div>
+
+</header>
+
+
+<div id="overlay" class="overlay"></div>
+
+
+<aside id="side" class="side">
+
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+
+<div class="logo">
+Raiyan<b>Methodz</b>
+</div>
+
+<button id="closeSide"
+class="btn secondary small"
+style="width:auto;text-align:center">
+×
+</button>
+
+</div>
+
+<button id="homeBtn">
+🏠 Home
+</button>
+
+<button id="logoutBtn">
+🚪 Logout
+</button>
+
+</aside>
+
+
+<main>
+
+<!-- HOME -->
+
+<section id="homeView">
+
+<div class="container">
+
+<div class="hero">
+
+<h1>
+What do you want to learn?
+</h1>
+
+<p class="muted">
+Choose a subject to continue your study.
+</p>
+
+</div>
+
+<div class="support-actions">
+  <button id="askAnythingBtn" class="support-btn">💬 Ask Anything</button>
+  <button id="homeBellBtn" class="bell-btn" title="Admin replies" aria-label="Admin replies">🔔<span id="homeUnreadDot" class="unread-dot"></span></button>
+</div>
+
+<div id="subjects" class="grid3"></div>
+
+</div>
+
+</section>
+
+
+<!-- TOPICS -->
+
+<section id="topicView" class="hidden">
+
+<div class="container">
+
+<button id="topicBack" class="back">
+← All Subjects
+</button>
+
+<h1 id="topicTitle"></h1>
+
+<div id="topics" class="grid3"></div>
+
+</div>
+
+</section>
+
+
+<!-- VIDEOS -->
+
+<section id="videoView" class="hidden">
+
+<div class="container">
+
+<button id="videoBack" class="back">
+← Topics
+</button>
+
+<h1 id="videoTitle"></h1>
+
+<div id="videos" class="grid2"></div>
+
+</div>
+
+</section>
+
+
+<!-- WATCH -->
+
+<section id="watchView" class="hidden">
+
+<div class="container">
+
+<button id="watchBack" class="back">
+← Videos
+</button>
+
+<div class="card">
+
+<div class="custom-player" id="customPlayer">
+    <div id="player" aria-label="YouTube video player"></div>
+
+    <div class="player-touch-block" id="playerTouchBlock" aria-hidden="true"></div>
+
+    <div class="progress-wrap">
+        <input id="progressBar" class="progress" type="range" min="0" max="1000" value="0" step="1" aria-label="Video progress">
+        <span id="timeLabel" class="time">0:00 / 0:00</span>
+    </div>
+
+    <div class="custom-controls">
+        <button id="playPauseBtn" type="button" aria-label="Play or pause">▶</button>
+        <button id="back10Btn" type="button" aria-label="Back 10 seconds">↶ 10</button>
+        <button id="forward10Btn" type="button" aria-label="Forward 10 seconds">10 ↷</button>
+        <button id="muteBtn" type="button" aria-label="Mute or unmute">🔊</button>
+        <button id="fullscreenBtn" type="button" aria-label="Fullscreen">⛶</button>
+        <button id="exitFullscreenBtn" type="button" class="hidden" aria-label="Exit fullscreen">✕</button>
+    </div>
+</div>
+
+<h2 id="watchTitle"></h2>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- SUPPORT CHAT -->
+<section id="supportView" class="hidden">
+  <div class="container">
+    <div class="support-head">
+      <button id="supportBack" class="back">← Home</button>
+      <div class="support-title">Ask Anything</div>
+      <div class="support-status">● Admin will answer within one day</div>
+    </div>
+    <div class="card chat-card">
+      <div class="chat-top">
+        <strong>Raiyan Methodz Support</strong>
+        <span>Ask your question here. Our admin will reply as soon as possible.</span>
+      </div>
+      <div id="studentChatMessages" class="chat-messages"></div>
+      <div class="chat-compose">
+        <textarea id="studentChatInput" maxlength="2000" placeholder="Write your message..."></textarea>
+        <button id="studentSendBtn" class="chat-send" aria-label="Send">➤</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+</div>
+
+
+<!-- ADMIN -->
+
+<section id="adminPage" class="hidden">
+
+<header class="top">
+
+<div class="logo">
+Raiyan<b>Methodz</b> Admin
+</div>
+
+<button id="adminExit"
+class="btn secondary small"
+style="margin-left:auto">
+Exit
+</button>
+
+</header>
+
+
+<div class="container">
+
+<h1>
+Admin Panel
+</h1>
+
+<p class="muted">
+Content is stored online in Supabase.
+</p>
+
+<div id="adminMsg"></div>
+
+
+<div style="margin:18px 0">
+
+<button id="studentsBtn"
+class="btn secondary">
+👥 Students
+</button>
+
+<button id="supportMessagesBtn" class="btn secondary">💬 Support Messages</button>
+
+</div>
+
+<div id="supportAdminPanel" class="card hidden" style="margin-bottom:18px">
+  <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap">
+    <div>
+      <h2 style="margin:0">Support Messages</h2>
+      <p class="muted" style="margin:5px 0 0">Student questions and admin replies.</p>
+    </div>
+    <button id="supportRefreshBtn" class="btn secondary small">↻ Refresh</button>
+  </div>
+  <div id="supportAdminList" class="support-list" style="margin-top:15px"></div>
+  <div id="adminSupportChat" class="admin-chat-wrap hidden">
+    <div class="support-head"><button id="adminSupportBack" class="back">← Conversations</button><div id="adminSupportTitle" class="support-title">Conversation</div></div>
+    <div class="card chat-card">
+      <div id="adminChatMessages" class="chat-messages"></div>
+      <div class="chat-compose">
+        <textarea id="adminChatInput" maxlength="2000" placeholder="Write a reply..."></textarea>
+        <button id="adminSendBtn" class="chat-send" aria-label="Send reply">➤</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- STUDENTS -->
+
+<div id="studentsPanel"
+class="card hidden"
+style="margin-bottom:18px">
+
+<h2>
+Students
+</h2>
+
+<div id="students"></div>
+
+</div>
+
+
+<div class="adminGrid">
+
+
+<!-- SUBJECTS -->
+
+<div class="card">
+
+<h2>
+Subjects
+</h2>
+
+<div id="adminSubjects" class="list"></div>
+
+<hr>
+
+<input
+id="newSubject"
+placeholder="Subject name"
+style="width:100%;padding:11px;border:1px solid #e5e9f0;border-radius:9px">
+
+<button
+id="addSubject"
+class="btn primary"
+style="margin-top:8px">
+
++ Add Subject
+
+</button>
+
+</div>
+
+
+<!-- EDITOR -->
+
+<div class="card">
+
+<h2 id="editorTitle">
+Select a subject
+</h2>
+
+<div id="editor" class="empty">
+Select a subject.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+<script>
+
+"use strict";
+
+
+/* =========================
+   SUPABASE
+========================= */
+
+const SUPABASE_URL =
+"https://bmtgrhfosaqepbqohpgp.supabase.co";
+
+const SUPABASE_ANON_KEY =
+"sb_publishable_TDjTHPmz0DxdSBoP1tiPQQ_1_xSoLdl";
+
+
+const sb =
+supabase.createClient(
+SUPABASE_URL,
+SUPABASE_ANON_KEY
+);
+
+
+/* =========================
+   GLOBAL DATA
+========================= */
+
+let site={
+ subjects:[]
+};
+
+let currentSubject=null;
+let currentTopic=null;
+let adminSubject=null;
+let adminOpen=false;
+
+
+/* =========================
+   HELPERS
+========================= */
+
+const $ =
+id=>document.getElementById(id);
+
+
+function uid(){
+
+return crypto.randomUUID?
+crypto.randomUUID():
+Date.now()+"_"+Math.random();
+
+}
+
+
+function esc(s){
+
+return String(s??"").replace(
+/[&<>"']/g,
+c=>({
+"&":"&amp;",
+"<":"&lt;",
+">":"&gt;",
+'"':"&quot;",
+"'":"&#039;"
+}[c])
+);
+
+}
+
+
+/* =========================
+   YOUTUBE ID
+========================= */
+
+function ytId(url){
+
+try{
+
+let x=new URL(url.trim());
+
+let host=
+x.hostname
+.replace(/^www\./,"")
+.toLowerCase();
+
+let path=
+x.pathname
+.split("/")
+.filter(Boolean);
+
+
+/* youtu.be */
+
+if(host==="youtu.be"){
+
+return path[0]||null;
+
+}
+
+
+/* youtube.com */
+
+if(
+host==="youtube.com" ||
+host.endsWith(".youtube.com")
+){
+
+if(
+path[0]==="shorts" ||
+path[0]==="embed" ||
+path[0]==="live"
+){
+
+return path[1]||null;
+
+}
+
+return x.searchParams.get("v");
+
+}
+
+}catch(e){}
+
+return null;
+
+}
+
+
+function driveId(url){
+    try{
+        const raw = String(url || "").trim();
+
+        // Google Drive: /file/d/FILE_ID/view
+        let m = raw.match(/drive\.google\.com\/file\/d\/([^/?#]+)/i);
+        if(m) return m[1];
+
+        // Google Drive: /open?id=FILE_ID or any URL with ?id=FILE_ID
+        m = raw.match(/[?&]id=([^&#]+)/i);
+        if(m) return m[1];
+
+        // Also accept a direct Drive file ID
+        if(/^[A-Za-z0-9_-]{10,}$/.test(raw)) return raw;
+    }catch(e){}
+    return null;
+}
+
+function isM3u8Url(url){
+    try{
+        const raw=String(url||"").trim();
+        if(!raw)return false;
+        const u=new URL(raw);
+        return /\.m3u8(?:$|[?#])/i.test(u.pathname+u.search+u.hash);
+    }catch(e){
+        return false;
+    }
+}
+
+function videoType(video){
+
+if(video?.source==="drive") return "drive";
+if(video?.source==="youtube") return "youtube";
+if(video?.source==="m3u8") return "m3u8";
+
+return ytId(video?.url) ? "youtube" :
+       (driveId(video?.url) ? "drive" :
+       (isM3u8Url(video?.url) ? "m3u8" : null));
+
+}
+
+
+/* =========================
+   MESSAGES
+========================= */
+
+function message(text,success=false){
+
+$("msg").innerHTML=text?
+
+`<div class="msg ${
+success?"success":"error"
+}">
+${esc(text)}
+</div>`:"";
+
+}
+
+
+function adminMessage(text,success=false){
+
+$("adminMsg").innerHTML=text?
+
+`<div class="msg ${
+success?"success":"error"
+}">
+${esc(text)}
+</div>`:"";
+
+}
+
+
+/* =========================
+   VIEW
+========================= */
+
+function view(id){
+
+[
+"homeView",
+"topicView",
+"videoView",
+"watchView",
+"supportView"
+].forEach(x=>
+$(x).classList.add("hidden")
+);
+
+$(id).classList.remove("hidden");
+
+scrollTo(0,0);
+
+}
+
+
+/* =========================
+   NORMALIZE DATABASE DATA
+========================= */
+
+function normalize(){
+
+if(!Array.isArray(site.subjects))
+site.subjects=[];
+
+
+site.subjects=
+site.subjects.map(s=>({
+
+id:s.id||uid(),
+
+name:String(
+s.name||"Untitled"
+),
+
+icon:String(
+s.icon||"📚"
+),
+
+topics:
+Array.isArray(s.topics)?
+s.topics.map(t=>({
+
+id:t.id||uid(),
+
+name:String(
+t.name||"Chapter"
+),
+
+videos:
+Array.isArray(t.videos)?
+t.videos.map(v=>({
+
+id:v.id||uid(),
+
+title:String(
+v.title||"Video"
+),
+
+url:String(
+v.url||""
+),
+
+source:
+v.source==="drive" ? "drive" :
+       v.source==="m3u8" ? "m3u8" :
+       "youtube"
+
+})):[ ]
+
+})):[]
+
+}));
+
+}
+
+
+/* =========================
+   LOAD SITE
+========================= */
+
+async function loadSite(){
+
+let r=
+await sb
+.from("site_data")
+.select("data")
+.eq("id",1)
+.maybeSingle();
+
+
+if(r.error)
+throw r.error;
+
+
+site=
+r.data?.data||{
+subjects:[]
+};
+
+normalize();
+
+}
+
+
+/* =========================
+   OPEN STUDENT
+========================= */
+
+function openStudent(user){
+
+$("credit").classList.remove("hidden");
+
+$("auth").classList.add("hidden");
+
+$("adminPage").classList.add("hidden");
+
+$("studentApp").classList.remove("hidden");
+
+$("avatar").textContent=
+(user.name||"S")[0].toUpperCase();
+
+renderSubjects();
+  refreshStudentUnread();
+
+view("homeView");
+
+}
+
+
+/* =========================
+   OPEN ADMIN
+========================= */
+
+function openAdmin(){
+
+adminOpen=true;
+
+$("auth").classList.add("hidden");
+
+$("studentApp").classList.add("hidden");
+
+$("adminPage").classList.remove("hidden");
+
+renderAdminSubjects();
+
+}
+
+
+/* =========================
+   AUTH
+========================= */
+
+function openAuth(){
+
+adminOpen=false;
+
+$("studentApp").classList.add("hidden");
+
+$("adminPage").classList.add("hidden");
+
+$("auth").classList.remove("hidden");
+
+sessionStorage.removeItem(
+"studyhub_admin"
+);
+
+}
+
+
+/* =========================
+   AUTH TABS
+========================= */
+
+$("studentTab").onclick=()=>{
+
+$("studentTab").classList.add("active");
+
+$("adminTab").classList.remove("active");
+
+$("studentAuth").classList.remove("hidden");
+
+$("adminAuth").classList.add("hidden");
+
+message("");
+
+};
+
+
+$("adminTab").onclick=()=>{
+
+$("adminTab").classList.add("active");
+
+$("studentTab").classList.remove("active");
+
+$("studentAuth").classList.add("hidden");
+
+$("adminAuth").classList.remove("hidden");
+
+message("");
+
+};
+
+
+/* =========================
+   REGISTER / LOGIN SWITCH
+========================= */
+
+$("toRegister").onclick=()=>{
+
+$("loginBox").classList.add("hidden");
+
+$("registerBox").classList.remove("hidden");
+
+message("");
+
+};
+
+
+$("toLogin").onclick=()=>{
+
+$("registerBox").classList.add("hidden");
+
+$("loginBox").classList.remove("hidden");
+
+message("");
+
+};
+
+
+/* =========================
+   REGISTER
+========================= */
+
+$("registerBtn").onclick=
+async()=>{
+
+let name=
+$("regName").value.trim();
+
+let loginId=
+$("regId").value.trim();
+
+let password=
+$("regPass").value;
+
+
+if(!name||!loginId||!password){
+
+return message(
+"Please fill in all fields."
+);
+
+}
+
+
+if(password.length<6){
+
+return message(
+"Password must be at least 6 characters."
+);
+
+}
+
+
+let r=
+await sb.rpc(
+"register_student",
+{
+p_name:name,
+p_login_id:loginId,
+p_password:password
+}
+);
+
+
+if(r.error){
+
+return message(
+r.error.message
+);
+
+}
+
+
+if(!r.data?.success){
+
+return message(
+r.data?.message||
+"Registration failed."
+);
+
+}
+
+
+message(
+"Account created. You can login now.",
+true
+);
+
+
+$("registerBox")
+.classList.add("hidden");
+
+$("loginBox")
+.classList.remove("hidden");
+
+$("loginId").value=
+loginId;
+
+$("loginPass").value="";
+
+};
+
+
+/* =========================
+   LOGIN
+========================= */
+
+$("loginBtn").onclick=
+async()=>{
+
+let loginId=
+$("loginId").value.trim();
+
+let password=
+$("loginPass").value;
+
+
+if(!loginId||!password){
+
+return message(
+"Enter username and password."
+);
+
+}
+
+
+let r=
+await sb.rpc(
+"login_student",
+{
+p_login_id:loginId,
+p_password:password
+}
+);
+
+
+if(r.error){
+
+return message(
+r.error.message
+);
+
+}
+
+
+if(!r.data?.success){
+
+return message(
+r.data?.message||
+"Wrong username or password."
+);
+
+}
+
+
+let user={
+
+name:r.data.name,
+
+login_id:r.data.login_id,
+
+id:r.data.id
+
+};
+
+
+localStorage.setItem(
+"studyhub_user",
+JSON.stringify(user)
+);
+
+
+openStudent(user);
+
+};
+
+
+/* =========================
+   ADMIN LOGIN
+========================= */
+
+$("adminLogin").onclick=
+async()=>{
+
+let password=
+$("adminPass").value;
+
+
+if(!password){
+
+return message(
+"Enter admin password."
+);
+
+}
+
+
+let r=
+await sb.rpc(
+"admin_login",
+{
+p_password:password
+}
+);
+
+
+if(r.error){
+
+return message(
+r.error.message
+);
+
+}
+
+
+if(!r.data?.success){
+
+return message(
+"Wrong admin password."
+);
+
+}
+
+
+sessionStorage.setItem(
+"studyhub_admin",
+"1"
+);
+
+// Keep the already verified admin password in memory for support RPC calls.
+supportAdminPassword = password;
+
+openAdmin();
+
+};
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+$("adminExit").onclick=
+openAuth;
+
+
+$("logoutBtn").onclick=async()=>{
+
+const user=currentStudent();
+
+// Record the student's logout time in Supabase before clearing local session.
+if(user?.id){
+  try{
+    await sb.rpc("student_logout",{p_student_id:String(user.id)});
+  }catch(e){
+    console.warn("Logout tracking RPC failed:",e);
+  }
+}
+
+localStorage.removeItem(
+"studyhub_user"
+);
+
+destroyYoutubePlayer();
+resetYoutubePlayerHost();
+
+openAuth();
+
+};
+
+
+/* =========================
+   SIDE MENU
+========================= */
+
+$("menuBtn").onclick=()=>{
+
+$("side").classList.add("open");
+
+$("overlay").classList.add("show");
+
+};
+
+
+$("closeSide").onclick=
+closeSide;
+
+$("overlay").onclick=
+closeSide;
+
+
+function closeSide(){
+
+$("side").classList.remove("open");
+
+$("overlay").classList.remove("show");
+
+}
+
+
+$("homeBtn").onclick=()=>{
+
+closeSide();
+
+renderSubjects();
+
+view("homeView");
+
+};
+
+
+/* =========================
+   STUDENT SUBJECTS
+========================= */
+
+function renderSubjects(){
+
+$("subjects").innerHTML=
+site.subjects.map(s=>`
+
+<div
+class="card click"
+data-id="${esc(s.id)}"
+>
+
+<div style="font-size:34px">
+${esc(s.icon)}
+</div>
+
+<h2>
+${esc(s.name)}
+</h2>
+
+<p class="muted">
+${s.topics.length} chapter(s)
+</p>
+
+</div>
+
+`).join("")
+
+||
+
+`<div class="empty"
+style="grid-column:1/-1">
+No subjects yet.
+</div>`;
+
+
+$("subjects")
+.querySelectorAll("[data-id]")
+.forEach(card=>{
+
+card.onclick=()=>
+openTopics(card.dataset.id);
+
+});
+
+}
+
+
+/* =========================
+   TOPICS
+========================= */
+
+function openTopics(id){
+
+currentSubject=
+site.subjects.find(
+x=>x.id===id
+);
+
+if(!currentSubject)return;
+
+
+$("topicTitle").textContent=
+currentSubject.name;
+
+
+$("topics").innerHTML=
+currentSubject.topics.map(t=>`
+
+<div
+class="card click"
+data-id="${esc(t.id)}"
+>
+
+<h3>
+${esc(t.name)}
+</h3>
+
+<p class="muted">
+${t.videos.length} video(s)
+</p>
+
+</div>
+
+`).join("")
+
+||
+
+`<div class="empty"
+style="grid-column:1/-1">
+No chapters yet.
+</div>`;
+
+
+$("topics")
+.querySelectorAll("[data-id]")
+.forEach(card=>{
+
+card.onclick=()=>
+openVideos(card.dataset.id);
+
+});
+
+
+view("topicView");
+
+}
+
+
+/* =========================
+   VIDEOS
+========================= */
+
+function openVideos(id){
+
+currentTopic=
+currentSubject.topics.find(
+x=>x.id===id
+);
+
+if(!currentTopic)return;
+
+
+$("videoTitle").textContent=
+currentTopic.name;
+
+
+$("videos").innerHTML=
+currentTopic.videos.map(
+(v,i)=>{
+
+let y=ytId(v.url);
+let d=driveId(v.url);
+let type=videoType(v);
+
+return`
+
+<article class="card">
+
+<div class="thumb">
+
+${
+y?
+`<img
+src="https://img.youtube.com/vi/${encodeURIComponent(y)}/hqdefault.jpg"
+alt=""
+>`
+:
+d?
+`<div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:42px">📁</div>`
+:
+type==="m3u8"?
+`<div style="height:100%;display:flex;align-items:center;justify-content:center;font-size:42px">📺</div>`
+:""
+}
+
+</div>
+
+<h3>
+${esc(v.title)}
+</h3>
+
+<p class="muted">
+${esc(currentSubject.name)}
+•
+${esc(currentTopic.name)}
+</p>
+
+<button
+class="btn primary full watch"
+data-i="${i}"
+>
+▶ Watch Video
+</button>
+
+</article>
+
+`;
+
+}
+).join("")
+
+||
+
+`<div class="empty"
+style="grid-column:1/-1">
+No videos yet.
+</div>`;
+
+
+$("videos")
+.querySelectorAll("[data-i]")
+.forEach(button=>{
+
+button.onclick=()=>
+openWatch(
+Number(button.dataset.i)
+);
+
+});
+
+
+view("videoView");
+
+}
+
+
+/* =========================
+   RESET PLAYER HELPER
+========================= */
+
+let ytPlayer = null;
+let driveMedia = null;
+let hlsPlayer = null;
+let currentPlayerType = null;
+
+function resetPlayer(){
+    if(ytPlayer){
+        try { ytPlayer.destroy(); } catch(e){}
+        ytPlayer = null;
+    }
+
+    if(driveMedia){
+        try{
+            driveMedia.pause();
+            driveMedia.removeAttribute("src");
+            driveMedia.load();
+        }catch(e){}
+        driveMedia = null;
+    }
+
+    if(hlsPlayer){
+        try{ hlsPlayer.destroy(); }catch(e){}
+        hlsPlayer = null;
+    }
+
+    currentPlayerType = null;
+
+    const oldPlayer = $("player");
+    if(oldPlayer) oldPlayer.remove();
+
+    const container = $("customPlayer");
+    if(container){
+        const controls = container.querySelector(".custom-controls");
+        const progressWrap = container.querySelector(".progress-wrap");
+        const touchBlock = container.querySelector(".player-touch-block");
+
+        if(controls) controls.style.display="";
+        if(progressWrap) progressWrap.style.display="";
+        if(touchBlock) touchBlock.style.display="";
+
+        const newDiv = document.createElement("div");
+        newDiv.id = "player";
+        newDiv.setAttribute("aria-label","Video player");
+        container.insertBefore(newDiv, container.firstChild);
+    }
+
+    $("muteBtn").textContent="🔊";
+    $("playPauseBtn").textContent="▶";
+    $("progressBar").value=0;
+    $("timeLabel").textContent="0:00 / 0:00";
+}
+
+/* =========================
+   WATCH VIDEO
+========================= */
+
+function openWatch(index){
+
+    const video = currentTopic?.videos?.[index];
+    const type = videoType(video);
+
+    if(!video || !type) return;
+
+    $("watchTitle").textContent = video.title;
+
+    resetPlayer();
+
+    const controls = document.querySelector(".custom-controls");
+    const progressWrap = document.querySelector(".progress-wrap");
+    const touchBlock = $("playerTouchBlock");
+
+    view("watchView");
+
+    /* =========================
+       GOOGLE DRIVE HTML5 PLAYER
+       ========================= */
+    if(type==="drive"){
+
+        const id = driveId(video.url);
+        if(!id) return;
+
+        currentPlayerType = "drive";
+
+        if(controls) controls.style.display="flex";
+        if(progressWrap) progressWrap.style.display="flex";
+        if(touchBlock) touchBlock.style.display="block";
+
+        const host = $("player");
+
+        // Use Drive's download endpoint as the media source.
+        // The file must be shared as "Anyone with the link -> Viewer".
+        const media = document.createElement("video");
+        media.id = "player";
+        media.setAttribute("playsinline","");
+        media.setAttribute("preload","metadata");
+        media.setAttribute("disablepictureinpicture","");
+        media.setAttribute("controlslist","nodownload noplaybackrate");
+        media.setAttribute("aria-label", video.title);
+        media.src = "https://drive.google.com/uc?export=download&id=" + encodeURIComponent(id);
+
+        host.replaceWith(media);
+        driveMedia = media;
+
+        media.addEventListener("loadedmetadata",()=>{
+            updatePlayButton();
+            updateProgress();
+        });
+
+        media.addEventListener("durationchange",updateProgress);
+        media.addEventListener("timeupdate",updateProgress);
+        media.addEventListener("play",updatePlayButton);
+        media.addEventListener("pause",updatePlayButton);
+        media.addEventListener("ended",updatePlayButton);
+        media.addEventListener("volumechange",()=>{
+            $("muteBtn").textContent = media.muted ? "🔇" : "🔊";
+        });
+
+        media.addEventListener("error",()=>{
+            console.error("Google Drive video could not be loaded.", media.error);
+            $("timeLabel").textContent="Drive video could not load";
+        });
+
+        // Try autoplay. Browser may block it; user can press Play.
+        media.play().catch(()=>{});
+        updatePlayButton();
+        updateProgress();
+
+        return;
+    }
+
+    /* =========================
+       M3U8 / HLS PLAYER
+       ========================= */
+    if(type==="m3u8"){
+        currentPlayerType = "m3u8";
+
+        if(controls) controls.style.display="flex";
+        if(progressWrap) progressWrap.style.display="flex";
+        if(touchBlock) touchBlock.style.display="block";
+
+        const host = $("player");
+        const media = document.createElement("video");
+        media.id = "player";
+        media.setAttribute("playsinline","");
+        media.setAttribute("preload","metadata");
+        media.setAttribute("disablepictureinpicture","");
+        media.setAttribute("controlslist","nodownload noplaybackrate");
+        media.setAttribute("aria-label", video.title);
+        media.muted = false;
+        host.replaceWith(media);
+
+        driveMedia = media;
+
+        media.addEventListener("loadedmetadata",()=>{
+            updatePlayButton();
+            updateProgress();
+        });
+        media.addEventListener("durationchange",updateProgress);
+        media.addEventListener("timeupdate",updateProgress);
+        media.addEventListener("play",updatePlayButton);
+        media.addEventListener("pause",updatePlayButton);
+        media.addEventListener("ended",updatePlayButton);
+        media.addEventListener("volumechange",()=>{
+            $("muteBtn").textContent = media.muted ? "🔇" : "🔊";
+        });
+        media.addEventListener("error",()=>{
+            console.error("M3U8/HLS video could not be loaded.", media.error);
+            $("timeLabel").textContent="M3U8 video could not load";
+        });
+
+        const src = video.url;
+
+        // Safari/iOS and browsers with native HLS support.
+        if(media.canPlayType("application/vnd.apple.mpegurl")){
+            media.src = src;
+        }else if(window.Hls && Hls.isSupported()){
+            hlsPlayer = new Hls({
+                enableWorker:true,
+                lowLatencyMode:false
+            });
+            hlsPlayer.loadSource(src);
+            hlsPlayer.attachMedia(media);
+            hlsPlayer.on(Hls.Events.MANIFEST_PARSED,()=>{
+                media.play().catch(()=>{});
+            });
+            hlsPlayer.on(Hls.Events.ERROR,(event,data)=>{
+                if(data?.fatal){
+                    console.error("HLS fatal error:",data);
+                    $("timeLabel").textContent="M3U8 stream could not load";
+                }
+            });
+        }else{
+            $("timeLabel").textContent="This browser does not support HLS";
+        }
+
+        media.play().catch(()=>{});
+        updatePlayButton();
+        updateProgress();
+        return;
+    }
+
+    /* =========================
+       YOUTUBE PLAYER
+       ========================= */
+
+    currentPlayerType = "youtube";
+
+    if(controls) controls.style.display="flex";
+    if(progressWrap) progressWrap.style.display="flex";
+    if(touchBlock) touchBlock.style.display="block";
+
+    const id = ytId(video.url);
+    let attempts = 0;
+
+    const createPlayer = () => {
+
+        if(typeof YT !== "undefined" && YT.Player){
+
+            try {
+
+                ytPlayer = new YT.Player("player", {
+
+                    videoId:id,
+
+                    host:"https://www.youtube-nocookie.com",
+
+                    playerVars:{
+                        autoplay:1,
+                        enablejsapi:1,
+                        rel:0,
+                        playsinline:1,
+                        controls:0,
+                        fs:0,
+                        disablekb:1,
+                        iv_load_policy:3,
+                        modestbranding:1,
+                        origin:window.location.origin
+                    },
+
+                    events:{
+                        onReady:function(){
+                            updatePlayButton();
+                            updateProgress();
+                        },
+                        onStateChange:function(){
+                            updatePlayButton();
+                            updateProgress();
+                        }
+                    }
+
+                });
+
+            }catch(e){
+                console.error(e);
+            }
+
+            return;
+        }
+
+        if(++attempts<30)
+            setTimeout(createPlayer,250);
+
+    };
+
+    createPlayer();
+
+}
+/* =========================
+   BACK BUTTONS
+========================= */
+
+$("topicBack").onclick=()=>{
+    view("homeView");
+};
+
+$("videoBack").onclick=()=>{
+    view("topicView");
+};
+
+$("watchBack").onclick=()=>{
+    resetPlayer();
+    view("videoView");
+};
+
+
+/* =========================
+   ADMIN SAVE
+========================= */
+
+let saveQueue = [];
+let saveRunning = false;
+
+async function saveSite(){
+
+    normalize();
+
+    saveQueue.push(
+        JSON.parse(JSON.stringify(site))
+    );
+
+    processSaveQueue();
+}
+
+async function processSaveQueue(){
+
+    if(saveRunning) return;
+
+    saveRunning = true;
+
+    while(saveQueue.length > 0){
+
+        const dataToSave = saveQueue.shift();
+
+        try{
+
+            let r = await sb.rpc(
+                "admin_save_site",
+                {
+                    p_data:dataToSave
+                }
+            );
+
+            if(r.error){
+                console.error(
+                    "Save error:",
+                    r.error
+                );
+            }
+
+            if(!r.data?.success){
+                console.error(
+                    "Save failed:",
+                    r.data?.message
+                );
+            }
+
+        }catch(e){
+
+            console.error(
+                "Save exception:",
+                e
+            );
+
+        }
+    }
+
+    saveRunning = false;
+}
+
+
+/* =========================
+   ADMIN SUBJECT LIST
+========================= */
+
+function renderAdminSubjects(){
+
+$("adminSubjects").innerHTML=
+site.subjects.map(s=>`
+
+<div class="item">
+
+<span>
+${esc(s.icon)}
+${esc(s.name)}
+</span>
+
+<div class="actions">
+
+<button
+class="btn secondary small"
+data-manage="${esc(s.id)}"
+>
+Manage
+</button>
+
+<button
+class="btn danger small"
+data-remove="${esc(s.id)}"
+>
+×
+</button>
+
+</div>
+
+</div>
+
+`).join("")
+
+||
+
+`<div class="empty">
+No subjects.
+</div>`;
+
+
+$("adminSubjects")
+.querySelectorAll("[data-manage]")
+.forEach(button=>{
+
+button.onclick=()=>
+manageSubject(
+button.dataset.manage
+);
+
+});
+
+
+$("adminSubjects")
+.querySelectorAll("[data-remove]")
+.forEach(button=>{
+
+button.onclick=()=>
+removeSubject(
+button.dataset.remove
+);
+
+});
+
+}
+
+
+/* =========================
+   ADD SUBJECT
+========================= */
+
+$("addSubject").onclick=
+async()=>{
+
+let name=
+$("newSubject").value.trim();
+
+
+if(!name)return;
+
+
+site.subjects.push({
+
+id:uid(),
+
+name:name,
+
+icon:"📚",
+
+topics:[]
+
+});
+
+
+try{
+
+await saveSite();
+
+$("newSubject").value="";
+
+renderAdminSubjects();
+
+adminMessage(
+"Subject added.",
+true
+);
+
+}catch(e){
+
+adminMessage(
+e.message
+);
+
+}
+
+};
+
+
+/* =========================
+   MANAGE SUBJECT
+========================= */
+
+function manageSubject(id){
+
+adminSubject=
+site.subjects.find(
+x=>x.id===id
+);
+
+if(!adminSubject)return;
+
+
+$("editorTitle").textContent=
+"Manage: "+adminSubject.name;
+
+
+renderEditor();
+
+}
+
+
+/* =========================
+   DELETE SUBJECT
+========================= */
+
+async function removeSubject(id){
+
+if(!confirm(
+"Delete subject and all chapters/videos?"
+))return;
+
+
+site.subjects=
+site.subjects.filter(
+x=>x.id!==id
+);
+
+
+try{
+
+await saveSite();
+
+adminSubject=null;
+
+renderAdminSubjects();
+
+$("editorTitle").textContent=
+"Select a subject";
+
+$("editor").innerHTML=
+`<div class="empty">
+Select a subject.
+</div>`;
+
+}catch(e){
+
+adminMessage(e.message);
+
+}
+
+}
+
+
+/* =========================
+   SUBJECT EDITOR
+========================= */
+
+function renderEditor(){
+
+let s=adminSubject;
+
+
+$("editor").className="";
+
+
+$("editor").innerHTML=`
+
+<div class="field">
+
+<label>
+Subject name
+</label>
+
+<input
+id="subName"
+value="${esc(s.name)}"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Icon
+</label>
+
+<input
+id="subIcon"
+value="${esc(s.icon)}"
+>
+
+</div>
+
+
+<button
+class="btn primary"
+id="saveSub"
+>
+Save Subject
+</button>
+
+
+<hr>
+
+
+<h3>
+Chapters
+</h3>
+
+
+<div class="list">
+
+${
+s.topics.map(t=>`
+
+<div class="item">
+
+<span>
+${esc(t.name)}
+(${t.videos.length})
+</span>
+
+<div class="actions">
+
+<button
+class="btn secondary small"
+data-topic="${esc(t.id)}"
+>
+Manage
+</button>
+
+<button
+class="btn danger small"
+data-delete-topic="${esc(t.id)}"
+>
+×
+</button>
+
+</div>
+
+</div>
+
+`).join("")
+
+||
+
+`<div class="empty">
+No chapters.
+</div>`
+}
+
+</div>
+
+
+<hr>
+
+
+<input
+id="newTopic"
+placeholder="Chapter name"
+style="width:100%;padding:11px;border:1px solid #e5e9f0;border-radius:9px"
+>
+
+
+<button
+class="btn primary"
+style="margin-top:8px"
+id="addTopic"
+>
++ Add Chapter
+</button>
+
+
+<div
+id="topicEditor"
+style="margin-top:18px"
+></div>
+
+`;
+
+
+$("saveSub").onclick=
+saveSubjectInfo;
+
+
+$("addTopic").onclick=
+addTopic;
+
+
+$("editor")
+.querySelectorAll("[data-topic]")
+.forEach(button=>{
+
+button.onclick=()=>
+manageTopic(
+button.dataset.topic
+);
+
+});
+
+
+$("editor")
+.querySelectorAll("[data-delete-topic]")
+.forEach(button=>{
+
+button.onclick=()=>
+removeTopic(
+button.dataset.deleteTopic
+);
+
+});
+
+}
+
+
+/* =========================
+   SAVE SUBJECT
+========================= */
+
+async function saveSubjectInfo(){
+
+adminSubject.name=
+$("subName").value.trim()
+||
+adminSubject.name;
+
+
+adminSubject.icon=
+$("subIcon").value.trim()
+||
+"📚";
+
+
+try{
+
+await saveSite();
+
+renderAdminSubjects();
+
+renderEditor();
+
+adminMessage(
+"Subject saved.",
+true
+);
+
+}catch(e){
+
+adminMessage(
+e.message
+);
+
+}
+
+}
+
+
+/* =========================
+   ADD CHAPTER
+========================= */
+
+async function addTopic(){
+
+let name=
+$("newTopic").value.trim();
+
+
+if(!name)return;
+
+
+adminSubject.topics.push({
+
+id:uid(),
+
+name:name,
+
+videos:[]
+
+});
+
+
+try{
+
+await saveSite();
+
+renderEditor();
+
+adminMessage(
+"Chapter added.",
+true
+);
+
+}catch(e){
+
+adminMessage(
+e.message
+);
+
+}
+
+}
+
+
+/* =========================
+   DELETE CHAPTER
+========================= */
+
+async function removeTopic(id){
+
+if(!confirm(
+"Delete chapter and videos?"
+))return;
+
+
+adminSubject.topics=
+adminSubject.topics.filter(
+x=>x.id!==id
+);
+
+
+try{
+
+await saveSite();
+
+renderEditor();
+
+}catch(e){
+
+adminMessage(
+e.message
+);
+
+}
+
+}
+
+
+/* =========================
+   MANAGE CHAPTER
+========================= */
+
+function manageTopic(id){
+
+let topic=
+adminSubject.topics.find(
+x=>x.id===id
+);
+
+
+if(!topic)return;
+
+
+$("topicEditor").innerHTML=`
+
+<div class="card">
+
+<h3>
+${esc(topic.name)}
+</h3>
+
+
+<div class="field">
+
+<label>
+Chapter name
+</label>
+
+<input
+id="topicName"
+value="${esc(topic.name)}"
+>
+
+</div>
+
+
+<button
+class="btn secondary small"
+id="saveTopic"
+>
+Save Name
+</button>
+
+
+<hr>
+
+
+<h4>
+Videos
+</h4>
+
+
+<div class="list">
+
+${
+topic.videos.map(
+(v,i)=>`
+
+<div class="item">
+
+<span>
+${esc(v.title)}
+</span>
+
+<div style="display:flex;gap:8px;align-items:center">
+
+<button
+class="btn secondary small"
+data-video-edit="${i}"
+>
+Edit
+</button>
+
+<button
+class="btn danger small"
+data-video-delete="${i}"
+>
+Delete
+</button>
+
+</div>
+
+</div>
+
+`).join("")
+
+||
+
+`<div class="empty">
+No videos.
+</div>`
+}
+
+</div>
+
+
+<hr>
+
+
+<h4>
+Add Video
+</h4>
+
+
+<div class="field">
+
+<label>
+Video title
+</label>
+
+<input
+id="videoName"
+placeholder="Example: Narration Part 1"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Video source
+</label>
+
+<select id="videoSource">
+<option value="youtube">YouTube</option>
+<option value="drive">Google Drive</option>
+<option value="m3u8">M3U8 / HLS</option>
+</select>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Video URL
+</label>
+
+<input
+id="videoUrl"
+placeholder="YouTube / Drive / M3U8 URL"
+>
+
+</div>
+
+
+<button
+class="btn primary"
+id="addVideo"
+>
++ Add Video
+</button>
+
+
+</div>
+
+`;
+
+
+$("saveTopic").onclick=
+()=>saveTopic(id);
+
+
+$("addVideo").onclick=
+()=>addVideo(id);
+
+
+$("topicEditor")
+.querySelectorAll("[data-video-edit]")
+.forEach(button=>{
+
+button.onclick=()=>
+editVideo(
+id,
+Number(
+button.dataset.videoEdit
+)
+);
+
+});
+
+$("topicEditor")
+.querySelectorAll("[data-video-delete]")
+.forEach(button=>{
+
+button.onclick=()=>
+removeVideo(
+id,
+Number(
+button.dataset.videoDelete
+)
+);
+
+});
+
+}
+
+
+/* =========================
+   SAVE CHAPTER
+========================= */
+
+async function saveTopic(id){
+
+let topic=
+adminSubject.topics.find(
+x=>x.id===id
+);
+
+
+let name=
+$("topicName").value.trim();
+
+
+if(name)
+topic.name=name;
+
+
+try{
+
+await saveSite();
+
+renderEditor();
+
+manageTopic(id);
+
+}catch(e){
+
+adminMessage(
+e.message
+);
+
+}
+
+}
+
+
+/* =========================
+   ADD VIDEO
+========================= */
+
+async function addVideo(id){
+
+let topic=
+adminSubject.topics.find(
+x=>x.id===id
+);
+
+let title=
+$("videoName").value.trim();
+
+let url=
+$("videoUrl").value.trim();
+
+let source=
+$("videoSource").value;
+
+let valid=
+source==="youtube" ? !!ytId(url) :
+source==="drive" ? !!driveId(url) :
+source==="m3u8" ? !!isM3u8Url(url) : false;
+
+if(!title||!valid){
+
+alert(
+source==="youtube"
+? "Enter a video title and valid YouTube URL."
+: source==="drive"
+? "Enter a video title and valid Google Drive URL."
+: "Enter a video title and valid M3U8 URL."
+);
+
+return;
+
+}
+
+topic.videos.push({
+
+id:uid(),
+
+title:title,
+
+url:url,
+
+source:source
+
+});
+
+try{
+
+await saveSite();
+
+renderEditor();
+
+manageTopic(id);
+
+adminMessage(
+"Video added.",
+true
+);
+
+}catch(e){
+
+adminMessage(
+e.message
+);
+
+}
+
+}
+
+
+/* =========================
+   EDIT VIDEO
+========================= */
+
+async function editVideo(id,index){
+
+let topic=
+adminSubject.topics.find(
+ x=>x.id===id
+);
+
+if(!topic || !topic.videos?.[index])return;
+
+let video=topic.videos[index];
+
+let title=prompt(
+"Enter video title:",
+video.title||""
+);
+
+if(title===null)return;
+title=title.trim();
+
+if(!title){
+alert("Video title cannot be empty.");
+return;
+}
+
+let url=prompt(
+"Enter video URL:",
+video.url||""
+);
+
+if(url===null)return;
+url=url.trim();
+
+if(!url){
+alert("Video URL cannot be empty.");
+return;
+}
+
+let source=
+ytId(url) ? "youtube" :
+(driveId(url) ? "drive" :
+(isM3u8Url(url) ? "m3u8" : null));
+
+if(!source){
+alert("Enter a valid YouTube, Google Drive, or M3U8 URL.");
+return;
+}
+
+video.title=title;
+video.url=url;
+video.source=source;
+
+try{
+await saveSite();
+renderEditor();
+manageTopic(id);
+adminMessage("Video updated.",true);
+}catch(e){
+adminMessage(e.message);
+}
+}
+
+/* =========================
+   DELETE VIDEO
+========================= */
+
+async function removeVideo(id,index){
+
+let topic=
+adminSubject.topics.find(
+x=>x.id===id
+);
+
+
+if(!topic)return;
+
+
+if(!confirm(
+"Delete this video?"
+))return;
+
+
+topic.videos.splice(
+index,
+1
+);
+
+
+try{
+
+await saveSite();
+
+renderEditor();
+
+manageTopic(id);
+
+}catch(e){
+
+adminMessage(
+e.message
+);
+
+}
+
+}
+
+
+/* =========================
+   STUDENT LIST
+========================= */
+
+$("studentsBtn").onclick=
+async()=>{
+
+let password=
+prompt(
+"Enter admin password:"
+);
+
+
+if(!password)return;
+
+
+let r=
+await sb.rpc(
+"admin_list_students",
+{
+p_password:password
+}
+);
+
+
+if(r.error){
+
+return adminMessage(
+r.error.message
+);
+
+}
+
+
+if(!r.data?.success){
+
+return adminMessage(
+"Wrong admin password."
+);
+
+}
+
+
+$("studentsPanel")
+.classList.remove("hidden");
+
+
+let students=
+Array.isArray(
+r.data.students
+)?
+r.data.students:
+[];
+
+
+$("students").innerHTML=
+students.map(s=>`
+
+<div class="item" style="display:block">
+
+<div style="margin-bottom:10px">
+
+<b style="font-size:16px">
+${esc(s.name)}
+</b>
+
+<div class="muted">
+Username / Number: ${esc(s.login_id)}
+</div>
+
+<div class="muted">
+User ID: ${esc(s.id)}
+</div>
+
+<div class="muted">
+Created: ${
+s.created_at
+?
+new Date(s.created_at).toLocaleString()
+:
+"Unknown"
+}
+</div>
+
+<div class="muted">
+Last Login: ${
+(s.last_login || s.last_login_at || s.login_at)
+?
+new Date(s.last_login || s.last_login_at || s.login_at).toLocaleString()
+:
+"Never"
+}
+</div>
+
+<div class="muted">
+Last Logout: ${
+(s.last_logout || s.last_logout_at || s.logout_at)
+?
+new Date(s.last_logout || s.last_logout_at || s.logout_at).toLocaleString()
+:
+"Never"
+}
+</div>
+
+</div>
+
+<button
+class="btn secondary small"
+data-change="${esc(s.id)}"
+data-login="${esc(s.login_id)}"
+>
+🔑 Change Password
+</button>
+
+</div>
+
+`).join("")
+
+||
+
+`<div class="empty">
+No students registered yet.
+</div>`;
+
+
+$("students")
+.querySelectorAll("[data-change]")
+.forEach(button=>{
+
+button.onclick=()=>
+changeStudentPassword(
+button.dataset.change,
+button.dataset.login
+);
+
+});
+
+};
+
+
+/* =========================
+   CHANGE STUDENT PASSWORD
+========================= */
+
+async function changeStudentPassword(
+id,
+login
+){
+
+let newPassword=
+prompt(
+"New password for "+login
+);
+
+
+if(!newPassword)return;
+
+
+if(newPassword.length<6){
+
+alert(
+"Minimum 6 characters."
+);
+
+return;
+
+}
+
+
+let adminPassword=
+prompt(
+"Admin password"
+);
+
+
+if(!adminPassword)return;
+
+
+let r=
+await sb.rpc(
+"admin_change_password",
+{
+p_admin_password:adminPassword,
+p_student_id:id,
+p_new_password:newPassword
+}
+);
+
+
+if(r.error){
+
+alert(
+r.error.message
+);
+
+return;
+
+}
+
+
+if(!r.data?.success){
+
+alert(
+r.data?.message||
+"Could not change password."
+);
+
+return;
+
+}
+
+
+alert(
+"Password changed successfully."
+);
+
+}
+
+
+
+/* =========================
+   ASK ANYTHING / SUPPORT CHAT
+========================= */
+
+let supportStudentId = null;
+let supportAdminPassword = null;
+let supportAdminStudentId = null;
+
+function currentStudent(){
+  try{return JSON.parse(localStorage.getItem("studyhub_user")||"null")}catch(e){return null}
+}
+
+function formatSupportTime(v){
+  try{return new Date(v).toLocaleString([], {month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});}
+  catch(e){return "";}
+}
+
+function setUnreadDot(show){
+  $("unreadDot")?.classList.toggle("show",!!show);
+  $("homeUnreadDot")?.classList.toggle("show",!!show);
+}
+
+async function refreshStudentUnread(){
+  const user=currentStudent();
+  if(!user?.id)return;
+  const r=await sb.rpc("support_unread_count",{p_student_id:String(user.id)});
+  if(!r.error) setUnreadDot(Number(r.data?.count||0)>0);
+}
+
+function renderSupportMessages(messages, targetId){
+  const box=$(targetId);
+  if(!box)return;
+  if(!messages?.length){
+    box.innerHTML='<div class="empty">No messages yet. Ask anything — we are here to help.</div>';
+    return;
+  }
+  box.innerHTML=messages.map(m=>`
+    <div class="bubble-row ${m.sender_role==="student"?"student":"admin"}">
+      <div class="bubble">
+        <div>${esc(m.message)}</div>
+        <div class="bubble-time">${formatSupportTime(m.created_at)}</div>
+      </div>
+    </div>
+  `).join("");
+  box.scrollTop=box.scrollHeight;
+}
+
+async function loadStudentSupport(){
+  const user=currentStudent();
+  if(!user?.id)return;
+  supportStudentId=String(user.id);
+  const r=await sb.rpc("support_get_messages",{p_student_id:supportStudentId});
+  if(r.error)return console.error(r.error);
+  renderSupportMessages(r.data?.messages||[],"studentChatMessages");
+  await sb.rpc("support_mark_student_read",{p_student_id:supportStudentId});
+  setUnreadDot(false);
+}
+
+function openSupportChat(){
+  const user=currentStudent();
+  if(!user?.id)return;
+  supportStudentId=String(user.id);
+  view("supportView");
+  loadStudentSupport();
+  setTimeout(()=>$("studentChatInput")?.focus(),100);
+}
+
+async function sendStudentSupport(){
+  const user=currentStudent();
+  const input=$("studentChatInput");
+  const msg=input.value.trim();
+  if(!user?.id||!msg)return;
+  const btn=$("studentSendBtn");
+  btn.disabled=true;
+  const r=await sb.rpc("support_send_message",{
+    p_student_id:String(user.id),
+    p_message:msg
+  });
+  btn.disabled=false;
+  if(r.error){alert(r.error.message);return;}
+  if(!r.data?.success){alert(r.data?.message||"Could not send message.");return;}
+  input.value="";
+  await loadStudentSupport();
+}
+
+$("askAnythingBtn").onclick=openSupportChat;
+$("bellBtn").onclick=openSupportChat;
+$("homeBellBtn").onclick=openSupportChat;
+$("supportBack").onclick=()=>{renderSubjects();view("homeView");};
+$("studentSendBtn").onclick=sendStudentSupport;
+$("studentChatInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendStudentSupport();}
+});
+
+
+/* ADMIN SUPPORT */
+
+async function adminPassword(){
+  // The admin password was already verified during Admin Login.
+  // Do not ask for it again when opening a support conversation.
+  return supportAdminPassword;
+}
+
+async function loadAdminSupportThreads(){
+  const pass=await adminPassword();
+  if(!pass)return;
+  const r=await sb.rpc("support_admin_threads",{p_admin_password:pass});
+  if(r.error){supportAdminPassword=null;adminMessage(r.error.message);return;}
+  if(!r.data?.success){
+    supportAdminPassword=null;
+    adminMessage(r.data?.message||"Wrong admin password.");
+    return;
+  }
+
+  $("supportAdminPanel").classList.remove("hidden");
+  $("adminSupportChat").classList.add("hidden");
+
+  const threads=r.data.threads||[];
+  $("supportAdminList").innerHTML=threads.length?threads.map(t=>`
+    <div class="support-thread" data-support-student="${esc(t.student_id)}">
+      <div class="thread-avatar">👤</div>
+      <div class="thread-main">
+        <strong>Student ${esc(t.student_id)}</strong>
+        <div class="thread-last">${esc(t.last_message||"No messages")}</div>
+      </div>
+      <div class="thread-meta">
+        ${Number(t.unread_count||0)>0?`<span class="thread-unread">${Number(t.unread_count)}</span>`:""}
+        <div class="muted" style="font-size:10px;margin-top:4px">${formatSupportTime(t.updated_at)}</div>
+      </div>
+    </div>
+  `).join(""):'<div class="empty">No student messages yet.</div>';
+
+  $("supportAdminList").querySelectorAll("[data-support-student]").forEach(el=>{
+    el.setAttribute("role","button");
+    el.setAttribute("tabindex","0");
+    el.onclick=()=>openAdminSupportChat(el.dataset.supportStudent);
+    el.onkeydown=(e)=>{
+      if(e.key==="Enter"||e.key===" "){
+        e.preventDefault();
+        openAdminSupportChat(el.dataset.supportStudent);
+      }
+    };
+  });
+}
+
+async function openAdminSupportChat(studentId){
+  const pass=await adminPassword();
+  if(!pass)return;
+  supportAdminStudentId=String(studentId);
+  const r=await sb.rpc("support_admin_get_messages",{
+    p_admin_password:pass,
+    p_student_id:supportAdminStudentId
+  });
+  if(r.error){adminMessage(r.error.message);return;}
+  if(!r.data?.success){adminMessage(r.data?.message||"Could not open conversation.");return;}
+
+  $("supportAdminPanel").classList.remove("hidden");
+  $("supportAdminList").classList.add("hidden");
+  $("adminSupportChat").classList.remove("hidden");
+  $("adminSupportTitle").textContent="Student "+supportAdminStudentId;
+  renderSupportMessages(r.data.messages||[],"adminChatMessages");
+  setTimeout(()=>$("adminChatInput")?.focus(),100);
+
+  await sb.rpc("support_admin_mark_read",{
+    p_admin_password:pass,
+    p_student_id:supportAdminStudentId
+  });
+}
+
+async function sendAdminSupport(){
+  const pass=await adminPassword();
+  const input=$("adminChatInput");
+  const msg=input.value.trim();
+  if(!pass||!supportAdminStudentId||!msg)return;
+
+  const btn=$("adminSendBtn");
+  btn.disabled=true;
+  const r=await sb.rpc("support_admin_reply",{
+    p_admin_password:pass,
+    p_student_id:supportAdminStudentId,
+    p_message:msg
+  });
+  btn.disabled=false;
+
+  if(r.error){alert(r.error.message);return;}
+  if(!r.data?.success){alert(r.data?.message||"Could not send reply.");return;}
+
+  input.value="";
+  await openAdminSupportChat(supportAdminStudentId);
+}
+
+$("supportMessagesBtn").onclick=loadAdminSupportThreads;
+$("supportRefreshBtn").onclick=loadAdminSupportThreads;
+$("adminSupportBack").onclick=async()=>{
+  $("adminSupportChat").classList.add("hidden");
+  $("supportAdminList").classList.remove("hidden");
+  supportAdminStudentId=null;
+  await loadAdminSupportThreads();
+};
+$("adminSendBtn").onclick=sendAdminSupport;
+$("adminChatInput").addEventListener("keydown",e=>{
+  if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();sendAdminSupport();}
+});
+
+/* =========================
+   REALTIME
+========================= */
+
+sb.channel("studyhub-live")
+
+.on(
+"postgres_changes",
+{
+event:"UPDATE",
+schema:"public",
+table:"site_data",
+filter:"id=eq.1"
+},
+payload=>{
+
+site=
+payload.new?.data||
+{
+subjects:[]
+};
+
+normalize();
+
+
+if(
+!$("studentApp")
+.classList.contains("hidden")
+){
+
+renderSubjects();
+
+}
+
+
+if(adminOpen){
+
+renderAdminSubjects();
+
+}
+
+}
+)
+
+.on("postgres_changes",{
+  event:"INSERT",
+  schema:"public",
+  table:"support_messages"
+},async payload=>{
+  const m=payload.new;
+  const user=currentStudent();
+
+  if(user?.id && String(m.student_id)===String(user.id)){
+    if(m.sender_role==="admin"){
+      setUnreadDot(true);
+      if(!$("supportView").classList.contains("hidden")){
+        await loadStudentSupport();
+      }
+    }else if(!$("supportView").classList.contains("hidden")){
+      await loadStudentSupport();
+    }
+  }
+
+  if(adminOpen && supportAdminPassword){
+    if(supportAdminStudentId && String(m.student_id)===String(supportAdminStudentId)){
+      await openAdminSupportChat(supportAdminStudentId);
+    }else if(!$("supportAdminPanel").classList.contains("hidden")){
+      await loadAdminSupportThreads();
+    }
+  }
+})
+.subscribe();
+
+
+/* =========================
+   START
+========================= */
+
+(async()=>{
+
+try{
+
+await loadSite();
+
+
+let user=
+JSON.parse(
+localStorage.getItem(
+"studyhub_user"
+)||
+"null"
+);
+
+
+if(user?.id){
+
+openStudent(user);
+
+}
+
+}catch(error){
+
+console.error(error);
+
+message(
+"Could not connect to Supabase: "+
+error.message
+);
+
+}
+
+})();
+
+</script>
+
+<script>
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
+
+document.addEventListener("keydown", function(e){
+
+    if(
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key.toUpperCase())) ||
+        (e.ctrlKey && e.key.toUpperCase() === "U")
+    ){
+        e.preventDefault();
+    }
+
+});
+</script>
+<script>
+/* ===== CUSTOM VIDEO CONTROLS: YOUTUBE + GOOGLE DRIVE ===== */
+let controlTimer=null;
+let progressDragging=false;
+
+function formatTime(seconds){
+    seconds=Math.max(0,Number(seconds)||0);
+    const h=Math.floor(seconds/3600);
+    const m=Math.floor((seconds%3600)/60);
+    const s=Math.floor(seconds%60);
+    return h ? `${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}` : `${m}:${String(s).padStart(2,'0')}`;
+}
+
+function hasMedia(){
+    return (currentPlayerType==="drive" || currentPlayerType==="m3u8") && driveMedia;
+}
+
+function updatePlayButton(){
+    if((currentPlayerType==="drive" || currentPlayerType==="m3u8") && driveMedia){
+        $("playPauseBtn").textContent=driveMedia.paused ? "▶" : "⏸";
+        return;
+    }
+
+    if(currentPlayerType==="youtube" && ytPlayer && typeof YT!=="undefined"){
+        const state=ytPlayer.getPlayerState();
+        $("playPauseBtn").textContent=state===YT.PlayerState.PLAYING ? "⏸" : "▶";
+    }
+}
+
+function getDuration(){
+    if(currentPlayerType==="drive" && driveMedia)
+        return Number.isFinite(driveMedia.duration) ? driveMedia.duration : 0;
+
+    if(currentPlayerType==="youtube" && ytPlayer)
+        return ytPlayer.getDuration()||0;
+
+    return 0;
+}
+
+function getCurrentTime(){
+    if(currentPlayerType==="drive" && driveMedia)
+        return driveMedia.currentTime||0;
+
+    if(currentPlayerType==="youtube" && ytPlayer)
+        return ytPlayer.getCurrentTime()||0;
+
+    return 0;
+}
+
+function seekTo(seconds){
+    seconds=Math.max(0,seconds);
+
+    if((currentPlayerType==="drive" || currentPlayerType==="m3u8") && driveMedia){
+        try{ driveMedia.currentTime=seconds; }catch(e){}
+        return;
+    }
+
+    if(currentPlayerType==="youtube" && ytPlayer){
+        ytPlayer.seekTo(seconds,true);
+    }
+}
+
+function updateProgress(){
+    if(progressDragging) return;
+
+    const duration=getDuration();
+    const current=getCurrentTime();
+
+    $("progressBar").value=duration ? Math.round((current/duration)*1000) : 0;
+    $("timeLabel").textContent=`${formatTime(current)} / ${formatTime(duration)}`;
+}
+
+function stopControlEvent(e){
+    e.preventDefault();
+    e.stopPropagation();
+}
+
+$("playPauseBtn").onclick=function(e){
+    stopControlEvent(e);
+
+    if((currentPlayerType==="drive" || currentPlayerType==="m3u8") && driveMedia){
+        if(driveMedia.paused) driveMedia.play().catch(()=>{});
+        else driveMedia.pause();
+
+        setTimeout(updatePlayButton,80);
+        return;
+    }
+
+    if(currentPlayerType==="youtube" && ytPlayer){
+        const state=ytPlayer.getPlayerState();
+        if(state===YT.PlayerState.PLAYING) ytPlayer.pauseVideo();
+        else ytPlayer.playVideo();
+
+        setTimeout(updatePlayButton,120);
+    }
+};
+
+$("back10Btn").onclick=function(e){
+    stopControlEvent(e);
+    seekTo(getCurrentTime()-10);
+    setTimeout(updateProgress,80);
+};
+
+$("forward10Btn").onclick=function(e){
+    stopControlEvent(e);
+    const duration=getDuration();
+    seekTo(Math.min(duration||Infinity,getCurrentTime()+10));
+    setTimeout(updateProgress,80);
+};
+
+$("muteBtn").onclick=function(e){
+    stopControlEvent(e);
+
+    if((currentPlayerType==="drive" || currentPlayerType==="m3u8") && driveMedia){
+        driveMedia.muted=!driveMedia.muted;
+        $("muteBtn").textContent=driveMedia.muted ? "🔇" : "🔊";
+        return;
+    }
+
+    if(currentPlayerType==="youtube" && ytPlayer){
+        if(ytPlayer.isMuted()){
+            ytPlayer.unMute();
+            $("muteBtn").textContent="🔊";
+        }else{
+            ytPlayer.mute();
+            $("muteBtn").textContent="🔇";
+        }
+    }
+};
+
+$("progressBar").addEventListener("pointerdown",function(e){
+    e.stopPropagation();
+    progressDragging=true;
+});
+
+$("progressBar").addEventListener("input",function(e){
+    e.stopPropagation();
+
+    const duration=getDuration();
+    const value=Number(this.value)/1000;
+
+    $("timeLabel").textContent=`${formatTime(duration*value)} / ${formatTime(duration)}`;
+});
+
+$("progressBar").addEventListener("change",function(e){
+    e.stopPropagation();
+
+    const duration=getDuration();
+
+    if(duration){
+        seekTo(duration*(Number(this.value)/1000));
+    }
+
+    progressDragging=false;
+    setTimeout(updateProgress,80);
+});
+
+$("progressBar").addEventListener("pointerup",function(){
+    progressDragging=false;
+});
+
+$("fullscreenBtn").onclick=async function(e){
+    stopControlEvent(e);
+
+    const box=$("customPlayer");
+
+    try{
+        if(box.requestFullscreen) await box.requestFullscreen();
+        else if(box.webkitRequestFullscreen) box.webkitRequestFullscreen();
+    }catch(err){}
+};
+
+$("exitFullscreenBtn").onclick=function(e){
+    stopControlEvent(e);
+
+    try{
+        if(document.exitFullscreen) document.exitFullscreen();
+        else if(document.webkitExitFullscreen) document.webkitExitFullscreen();
+    }catch(err){}
+};
+
+document.addEventListener("fullscreenchange",function(){
+    const full=!!document.fullscreenElement;
+
+    $("fullscreenBtn").classList.toggle("hidden",full);
+    $("exitFullscreenBtn").classList.toggle("hidden",!full);
+});
+
+const playerBlock=$("playerTouchBlock");
+
+if(playerBlock){
+    ["click","dblclick","pointerdown","pointerup","touchstart","touchend","mousedown","mouseup","contextmenu","wheel"].forEach(type=>{
+        playerBlock.addEventListener(type,function(e){
+            e.preventDefault();
+            e.stopPropagation();
+        },{passive:false});
+    });
+}
+
+$("customPlayer").addEventListener("click",function(e){
+    if(!e.target.closest(".custom-controls") && !e.target.closest(".progress-wrap")){
+        e.preventDefault();
+        e.stopPropagation();
+    }
+},true);
+
+clearInterval(controlTimer);
+controlTimer=setInterval(()=>{
+    updatePlayButton();
+    updateProgress();
+},250);</script>
+
+</body>
+</html>
