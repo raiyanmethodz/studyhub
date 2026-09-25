@@ -2194,6 +2194,14 @@ async function saveSite(){
 
     normalize();
 
+    /* Reconnect adminSubject to the newly normalized object */
+    if(adminSubject?.id){
+        adminSubject =
+            site.subjects.find(
+                s => s.id === adminSubject.id
+            ) || adminSubject;
+    }
+
     saveQueue.push(
         JSON.parse(JSON.stringify(site))
     );
